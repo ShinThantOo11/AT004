@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam List Screen</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    
+    <!-- to create exam content start  -->
+    <div
+      class="create-exam-container min-vh-100 w-100 position-fixed top-0 d-flex justify-content-center align-items-center d-none fadeIn"
+      style="background-color: rgba(0, 0, 0, 0.4); z-index: 1000"
+    >
+      <div class="create-exam-content rounded shadow bg-white">
+        <div class="d-flex justify-content-end p-2">
+          <div
+            class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle"
+            style="width: 25px; height: 25px; cursor: pointer"
+            id="cancel_btn"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <h5 class="text-success text-center mb-3">To Create Exam Content</h5>
+          <form action="">
+            <div class="input-group-sm mb-2 shadow-sm">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="teacher_name"
+              >
+                <option selected>Teacher Name</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="input-group-sm mb-2 shadow-sm">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="courde_name"
+              >
+                <option selected>Course Name</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="input-group-sm mb-2 shadow-sm">
+              <label for="description" class="form-label fw-bold mb-1"
+                ><small
+                  >Description <span class="text-danger">*</span></small
+                ></label
+              >
+              <textarea
+                class="form-control"
+                id="description"
+                rows="3"
+                placeholder="Add description about exam"
+                required
+              ></textarea>
+            </div>
+            <div class="input-group-sm mb-2 shadow-sm">
+              <label for="exam_status" class="form-label fw-bold mb-1"
+                ><small
+                  >Exam Status <span class="text-danger">*</span></small
+                ></label
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="exam_status"
+                required
+              >
+                <option selected>Exam Status</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="input-group-sm mb-2 shadow-sm">
+              <label for="section_name" class="form-label fw-bold mb-1"
+                ><small
+                  >Section Name <span class="text-danger">*</span></small
+                ></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="section_name"
+                required
+              />
+            </div>
+            <div class="input-group-sm mb-2 shadow-sm">
+              <label for="exam_date" class="form-label fw-bold mb-1"
+                ><small
+                  >Exam Date <span class="text-danger">*</span></small
+                ></label
+              >
+              <input type="date" class="form-control" id="exam_date" required />
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="col-6 px-1">
+                <div class="input-group-sm mb-2 shadow-sm">
+                  <label for="exam_start_time" class="form-label fw-bold mb-1"
+                    ><small
+                      >Start Time <span class="text-danger">*</span></small
+                    ></label
+                  >
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="exam_start_time"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-6 px-1">
+                <div class="input-group-sm mb-2 shadow-sm">
+                  <label for="exam_end_time" class="form-label fw-bold mb-1"
+                    ><small
+                      >End Time <span class="text-danger">*</span></small
+                    ></label
+                  >
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="exam_end_time"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="input-group-sm mb-3 shadow-sm">
+              <label for="passing_score" class="form-label fw-bold mb-1"
+                ><small
+                  >Passing Score <span class="text-danger">*</span></small
+                ></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="passing_score"
+                placeholder="Enter minimum passing score"
+                required
+              />
+            </div>
+            <div class="input-group-sm text-end">
+              <input
+                type="submit"
+                class="form-control btn btn-sm btn-success"
+                id="submit"
+                style="width: 100px"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- to create exam content end  -->
+
+    <section class="main container mt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#" class="text-decoration-none">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Exam</li>
+        </ol>
+      </nav>
+
+      <!-- to add filter start  -->
+      <div class="mt-4">
+        <form action="">
+          <div class="d-flex flex-wrap align-items-end justify-content-between">
+            <div class="">
+              <label for="exam_from" class="fw-bold"><small>Exam From</small></label><br>
+              <input type="date" class="px-3 rounded shadow-sm border-1" id="exam_from">
+            </div>
+            <div class="">
+              <label for="exam_to" class="fw-bold"><small>Exam To</small></label><br>
+              <input type="date" class="px-3 rounded shadow-sm border-1" id="exam_to">
+            </div>
+            <div class="">
+              <select name="status" id="status" class="px-3 rounded shadow-sm">
+                <option value=""><small>Exam By Status</small></option>
+                <option value=""><small>one</small></option>
+                <option value=""><small>two</small></option>
+                <option value=""><small>three</small></option>
+              </select>
+            </div>
+            <div class="">
+              <select name="teacher" id="teacher" class="px-3 rounded shadow-sm">
+                <option value=""><small>Exam By Teacher</small></option>
+                <option value=""><small>one</small></option>
+                <option value=""><small>two</small></option>
+                <option value=""><small>three</small></option>
+              </select>
+            </div>
+            <div class="">
+              <select name="course" id="course" class="px-3 rounded shadow-sm">
+                <option value=""><small>Exam By Courses</small></option>
+                <option value=""><small>one</small></option>
+                <option value=""><small>two</small></option>
+                <option value=""><small>three</small></option>
+              </select>
+              <input type="reset" class="ms-2 border-0 rounded bg-success text-white px-2" value="clear">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- to add filter end  -->
+
+      <div class="text-end mt-3">
+        <div class="">
+          <small class="fw-bold me-2"
+            ><span class="">18</span> exams found</small
+          >
+          <small
+            class="bg-success rounded text-white px-2 py-1 fw-bold"
+            style="cursor: pointer"
+            id="create_exam"
+            >Create Exam</small
+          >
+        </div>
+      </div>
+
+      <div class="exam-list mt-2">
+        <div class="row">
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_good"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">01. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-success">75%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_good"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">02. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-success">75%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_good"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">03. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-success">75%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_bad"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">04. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-danger">25%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_good"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">05. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-success">75%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div
+              class="card bg-white mt-3 shadow-sm"
+              data-custom-type="result_bad"
+            >
+              <div class="d-flex justify-content-end align-items-center p-2">
+                <i
+                  class="fa-solid fa-pen-to-square text-success"
+                  style="cursor: pointer"
+                ></i>
+                <div
+                  class="d-flex justify-content-center align-items-center bg-danger text-white rounded-circle ms-2"
+                  style="width: 20px; height: 20px; cursor: pointer"
+                  id=""
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+              <div class="card-body pt-0 rounded">
+                <div class="fw-bolder">
+                  <span class="text-success">06. </span>
+                  Exam Title
+                  <span class=""> (Exam Created)</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3 fw-bold"
+                >
+                  <small class="">Class Name</small>
+                  <small class="">(Coding Section)</small>
+                </div>
+                <div class="fw-bold">
+                  <small>Teacher Name</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center fw-bold"
+                >
+                  <small class="text-danger">35%</small>
+                  <small class="">60 minutes</small>
+                </div>
+                <div class="text-muted fw-bold">
+                  <small>2023-04-12 (9:00am - 12:00pm)</small>
+                </div>
+                <div
+                  class="d-flex flex-wrap justify-content-between align-items-center fw-bold mt-3"
+                >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Questions</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Set Examinee</a></small
+                  >
+                  <small class=""
+                    ><a href="#" class="text-success">Exam Result</a></small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
